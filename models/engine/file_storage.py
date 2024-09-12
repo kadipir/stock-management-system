@@ -43,7 +43,7 @@ class FileStorage:
 
 
     def reload(self):
-        if os.path.isfile(FileStorage.__file_path):
+        if os.path.isfile(FileStorage._file_path):
             with open(FileStorage.__fil_path, "r", encoding = "utf-8") as file:
                 try:
                     obj_dict = json.load(file)
