@@ -32,15 +32,9 @@ class StockCommand(cmd.Cmd):
         prompt (str): The command prompt.
     """
 
-    prompt = "(hbnb) "
+    prompt = "(stock) "
     __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
+        "Stock"
     }
 
     def emptyline(self):
