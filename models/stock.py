@@ -16,8 +16,7 @@ class Stock(BaseModel):
         else:
             self.inventory[name] = {
                     'name' : name,
-                    'quantity' : quantity,
-                    }
+                    'quantity' : quantity,}
 
-if __name__ == "__main__":
-    pass
+    def __str__(self):
+        return str(self.inventory)                                 

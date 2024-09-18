@@ -5,6 +5,7 @@ class that defines all common attributes of other classes
 import models
 from datetime import datetime
 from datetime import datetime
+import uuid
 
 class BaseModel:
      """this is a class that defines all common attributes of other classes"""
