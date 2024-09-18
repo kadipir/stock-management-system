@@ -21,7 +21,7 @@ class FileStorage:
         adds objects into the empty dictionary __objects
         """
         obj_cls_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_cls_name,obj.id)
+        key = "{}".format(obj_cls_name,obj)
         FileStorage._objects[key] = obj
 
 

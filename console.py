@@ -35,7 +35,7 @@ class StockCommand(cmd.Cmd):
 
     prompt = "(stock) "
     __classes = {
-        "Stock"
+            "Stock" : Stock
     }
 
     def emptyline(self):
@@ -95,7 +95,7 @@ class StockCommand(cmd.Cmd):
             print("** class name missing **")
         elif argl[0] not in StockCommand.__classes:
             print("** class doesn't exist **")
-        elif "{}.{}".format(argl[0] not in objdict:
+        elif "{}".format(argl[0]) not in objdict:
             print("** no instance found **")
         else:
             print(objdict["{}".format(argl[0])])
@@ -112,7 +112,7 @@ class StockCommand(cmd.Cmd):
         elif "{}".format(argl[0]) not in objdict.keys():
             print("** no instance found **")
         else:
-            del objdict["{}".format(argl[0]]
+            del objdict["{}".format(argl[0])]
             storage.save()
 
     def do_all(self, arg):
@@ -142,4 +142,4 @@ class StockCommand(cmd.Cmd):
         print(count)
   
 if __name__ == "__main__":
-    HBNBCommand().cmdloop()
+    StockCommand().cmdloop()
