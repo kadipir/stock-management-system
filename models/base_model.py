@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """
+class that defines all common attributes of other classes
 """
-
+import models
+from datetime import datetime
+from datetime import datetime
 
 class BaseModel:
      """this is a class that defines all common attributes of other classes"""
-    def __init__(self, *args, **kwargs):
+     def __init__(self, *args, **kwargs):
         """method used to assign uuid when an instance is created"""
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
@@ -23,19 +26,19 @@ class BaseModel:
                     setattr(self, key, value)
         models.storage.new(self)
 
-    def save(self):
+     def save(self):
         """updates the current time an instance was saved"""
         self.updated_at = datetime.utcnow()
         models.storage.save()
        
-    def to_dict(self):
+     def to_dict(self):
         """return a dictionary containing keys and values"""
         inst_dict = self.__dict__.copy()
         inst_dict["class"] = self.__class__.__name__
         inst_dict["created_at"] = self.created_at.isoformat()
         inst_dict["updated_at"] = self.updated_at.isoformat()
         return inst_dict
-    def __str__(self):
+     def __str__(self):
         """prints the class nam, id and the dictionary"""
         class_name = self.__class__.__name__
         return "[{}] ({}) [{}]".format(class_name,self.id,self.__dict__)

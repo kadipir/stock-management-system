@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+from models.base_model import BaseModel
 """
 class that enables creation of an instance of the stock
 """
 
-class Stock:
+class Stock(BaseModel):
     def __init__(self):
         self.inventory = {}
 
@@ -18,3 +19,5 @@ class Stock:
                     'quantity' : quantity,
                     }
 
+if __name__ == "__main__":
+    pass

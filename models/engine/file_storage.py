@@ -2,7 +2,8 @@
 
 
 import json
-import os 
+import os
+from models.stock import Stock
 from models.base_model import BaseModel
 
 
@@ -33,18 +34,18 @@ class FileStorage:
 
     
     def save(self):
-        all_objs = FileStorage.__objects
+        all_objs = FileStorage._objects
         obj_dict = {}
         for obj in all_objs.keys():
             obj_dict[obj] = all_objs[obj].to_dict()
-        with open(FileStorage.__file_path, "w", encoding = "utf-8") as file:
+        with open(FileStorage._file_path, "w", encoding = "utf-8") as file:
             json.dump(obj_dict, file)
 
 
 
     def reload(self):
         if os.path.isfile(FileStorage._file_path):
-            with open(FileStorage.__fil_path, "r", encoding = "utf-8") as file:
+            with open(FileStorage._file_path, "r", encoding = "utf-8") as file:
                 try:
                     obj_dict = json.load(file)
                     for key, values in obj_dict.items():

@@ -21,7 +21,7 @@ class StockCommand(cmd.Cmd):
     def preloop(self):
         """Prints if isatty is false"""
         if not sys.__stdin__.isatty():
-            print('(hbnb)')
+            print('(stock)')
 
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
@@ -77,7 +77,7 @@ class StockCommand(cmd.Cmd):
     def postcmd(self, stop, line):
         """Prints if isatty is false"""
         if not sys.__stdin__.isatty():
-            print('(hbnb) ', end='')
+            print('(stock) ', end='')
         return stop
 
     def do_quit(self, command):
@@ -119,8 +119,8 @@ class StockCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
         new_instance = StockCommand.classes[arg_list[0]](**kw)
-        new_instance.save()
-        print(new_instance.id)
+        storage.save()
+        print(new_instance.id) 
 
     def help_create(self):
         """ Help information for the create method """
@@ -141,7 +141,7 @@ class StockCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        if c_name not in HBNBCommand.classes:
+        if c_name not in StockCommand.classes:
             print("** class doesn't exist **")
             return
 
@@ -172,7 +172,7 @@ class StockCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        if c_name not in HBNBCommand.classes:
+        if c_name not in StockCommand.classes:
             print("** class doesn't exist **")
             return
 
@@ -217,7 +217,7 @@ class StockCommand(cmd.Cmd):
     def do_count(self, args):
         """Count current number of class instances"""
         count = 0
-        for k, v in storage._FileStorage__objects.items():
+        for k, v in storage.FileStorage._objects.items():
             if args == k.split('.')[0]:
                 count += 1
         print(count)
