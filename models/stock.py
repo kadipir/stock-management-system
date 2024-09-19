@@ -14,14 +14,13 @@ class Stock(BaseModel):
         if name in self.inventory:
             self.inventory[name] += quantity
         else:
+            name = input("Enter item name: ")
+            quantity = input("Enter quantity: ")
             self.inventory[name] = {
                     'name' : name,
-                    'quantity' : quantity}
+                    'quantity' : quantity
+                    }
+
 
     def __str__(self):
         return str(self.inventory)       
-
-if __name__ == "__main__":
-    my_stock = Stock()
-    my_stock.product()
-    print(my_stock)

@@ -26,7 +26,7 @@ def parse(arg):
         return retl
 
 
-class StockCommand(cmd.Cmd):
+class StockCommand(cmd.Cmd, Stock):
     """Defines the Stock command interpreter.
 
     Attributes:
@@ -82,8 +82,10 @@ class StockCommand(cmd.Cmd):
         elif argl[0] not in StockCommand.__classes:
             print("** class doesn't exist **")
         else:
-            print(eval(argl[0])())
-            storage.save()
+            instance = eval(argl[0])()
+            instance.product("mug", 4)
+            print("Stock created")
+            instance.save()
 
     def do_show(self, arg):
         """Usage: show <class> or <class>.show
