@@ -6,12 +6,12 @@ import os
 from models.stock import Stock
 from models.base_model import BaseModel
 
+classes = {"Stock" : Stock}
 
 class FileStorage:
     """
     class that stores objects that can be reloaded when the program is launched again
     """
-    classes = {"Stock" : Stock}
     _file_path = 'file.json'
     _objects = {}
 

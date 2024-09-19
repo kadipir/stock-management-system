@@ -85,7 +85,7 @@ class StockCommand(cmd.Cmd, Stock):
             instance = eval(argl[0])()
             instance.product("mug", 4)
             print("Stock created")
-            instance.save()
+            storage.save()
 
     def do_show(self, arg):
         """Usage: show <class> or <class>.show
